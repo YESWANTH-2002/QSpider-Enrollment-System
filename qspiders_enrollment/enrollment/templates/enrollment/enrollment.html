@@ -1,0 +1,36 @@
+<!-- enrollment/templates/enrollment/enrollment.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qspiders Enrollment</title>
+    <link rel="stylesheet" href="{% static 'enrollment/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Qspiders Enrollment</h2>
+        <form method="post" action="{% url 'enrollment' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Enroll Now</button>
+        </form>
+    </div>
+
+    <!-- Include jQuery (required for Select2) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Include Select2 CSS and JavaScript from CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+    <!-- Initialize Select2 for the selected_course field -->
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
+</body>
+</html>
